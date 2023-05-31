@@ -1,0 +1,95 @@
+
+
+/* Card Popular */
+.card-popular {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+.card-popular-layout {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.card-popular-layout img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s;
+} 
+.card-popular-layout .sticke-span {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    background-color: rgb(112, 213, 66);
+    padding: 5px 10px;
+    color: white;
+    font-weight: 700;
+    border-radius: 10px;
+    font-size: .8rem;
+}
+
+.card-popular-layout .content-popular {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+}
+.card-popular-layout .content-popular h3 {
+    font-size: 1.4rem;
+    color: white;
+}
+.card-popular-layout .content-popular .ticker-content {
+    color: white;
+}
+
+.card-popular-layout .ticker-camera {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+}
+.card-popular-layout .ticker-camera span {
+    visibility: hidden;
+    opacity: 0;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: .8rem;
+    font-weight: 600;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    transition: visibility .3s,opacity .3s;
+}
+
+.card-popular-layout .ticker-like {
+    position: absolute;
+    right: 5%;
+    bottom: 40%;
+}
+
+.card-popular-layout .ticker-like span {
+    visibility: hidden;
+    opacity: 0;
+    color: white;
+    font-size: 1.6rem;
+    transition: visibility .3s,opacity .3s;
+}
+
+
+.card-popular-layout .ticker-like > span {
+    margin-left: 10px;
+}
+
+
+.card-popular:hover .card-popular-layout img {
+    transform: scale(1.2);
+}
+.card-popular:hover .card-popular-layout .ticker-camera span {
+    visibility: visible;
+    opacity: 1;
+}
+.card-popular:hover .card-popular-layout .ticker-like span {
+    visibility: visible;
+    opacity: 1;
+}

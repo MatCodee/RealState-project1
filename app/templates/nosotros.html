@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'components/HeaderWhite.html' %}
+
+
+<section class="section-layout">
+    <div class="global-container">
+        <div class="row align-items-center section-layout">
+            <div class="col-sm-12 col-md-4">
+                <img src="{% static 'img/service.jpg' %}" alt="">
+            </div>
+            <div class="col-sm-12 col-md-8">
+                <span class="mb-4">Quienes Somos</span>
+                <h3 class="h1 fw-3">Nuestro Objetivo</h3>
+                <p>Somos un equipo apasionado de agentes inmobiliarios con una amplia experiencia en el mercado inmobiliario. Nuestro objetivo principal es superar las expectativas de nuestros clientes y hacer de la experiencia de compra de propiedades un proceso sencillo y gratificante. Estamos comprometidos con la excelencia y la satisfacción del cliente.</p>
+            </div>
+        </div>
+        <div class="row align-items-center section-layout">
+            <div class="col-sm-12 col-md-6">
+                <h2>VISION</h2>
+                <div class="linea"></div>
+                <p class="fs-5">Posicionarse a nivel nacional como la mejor empresa en el rubro de corretaje de propiedades. </p>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <img src="https://www.monumentos.gob.cl/sites/default/files/styles/large-16_9/public/dji_0159.jpg?itok=wu7lzS1p" alt="">
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6">
+                <img src="https://i0.wp.com/apuntesyviajes.com/wp-content/uploads/2021/12/valparaiso_a_pie.jpg?fit=1200%2C900&ssl=1" alt="">
+            </div>
+            <div class="col-6">
+                <h2>MISION</h2>
+                <div class="linea"></div>
+                <p class="fs-5">
+                    satisfacer los requerimientos de compras, ventas y arriendo de bienes inmuebles a nuestros clientes brindándoles un
+                    servicio integral de calidad.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

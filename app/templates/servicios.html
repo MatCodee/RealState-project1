@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+{% include 'components/HeaderWhite.html' %}
+
+<section class="section-layout ">
+    <div class="global-container">
+        <div class="text-center">
+            <h1>Conoce nuestos servicios</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-md-12 col-sm-12 col-12 mx-auto edit-text-service my-3">
+                <img src="{% static 'img/iconos/icon2.png' %}" class="img-edit-red" alt="">
+                <h2>Venta de Propiedades</h2>
+                <p>Somos Altamira Gestión Inmobiliaria Ltda., una empresa líder en gestión inmobiliaria, con más de 20 años
+                    de experiencia
+                    en la I Región, nos distinguimos por la constante preocupación en ofrecer a nuestros clientes una
+                    atención personalizada
+                    y la más completa asesoría en la compra venta de bienes inmuebles, desarrollando una amplia gama de
+                    servicio orientados
+                    a satisfacer las necesidades tanto de personas como de empresas, suministrando, entregando información
+                    oportuna y
+                    eficiente, herramientas técnicas y de asesoría profesional, a través de su equipo multidisciplinario de
+                    compuesto de
+                    agentes inmobiliarios, administrativos, abogados, constructores y arquitectos.</p>
+                <a href="#" class="btn btn-primary btn-conf">Informacion completa</a>
+            </div>
+            <br>
+            <div class="col-lg-5 col-md-12 col-sm-12 col-12 mx-auto edit-text-service my-3">
+                <img src="{% static 'img/iconos/icon3.png' %}" class="img-edit-red" alt="">
+                <h2>Arriendo de Propiedades</h2>
+                <p>El área de Arriendos y Administración de ALTAMIRA GESTIÓN INMOBILIARIA LIMITADA, es una plataforma
+                    conformada por un
+                    equipo de profesionales y ejecutivos multidisciplinarios con dedicación exclusiva para das soporte a las
+                    necesidades y
+                    requerimientos de nuestros clientes, siendo nuestro principal objetivo que usted tenga la confianza que
+                    su propiedad y
+                    patrimonio se encuentra en manos de profesionales.
+                    Nuestros servicios se componen de dos fases:
+                    Fase 1: Servicio de Gestión Inmobiliaria
+                    Fase 2: Servicio Administración mensual</p>
+                <a href="#" class="btn btn-primary btn-conf">Informacion completa</a>
+            </div>
+    
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

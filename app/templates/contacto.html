@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% include 'components/HeaderWhite.html' %}
+
+<div class="global-container">
+    <div class="row section-layout">
+        <div class="col-sm-12 col-md-3">
+            <div class="card-contact">
+                <h2 class="mb-5">Los Angeles, USA</h2>
+                <span class="text-secondary">2005 Stokes Isle Apt. 896, Los Angeles 10010</span>
+                <div class="contact-item mb-3">
+                    <span class="fw-bold fs-4 text-primary"> <i class="bi bi-clock-fill"></i>  Work Scedule</span>
+                    <div class="mt-3">
+                        <span>Mon - Sat: 11:00 - 19:00 </span>
+                        <span>Sun: 11:00 - 16:00</span>
+                    </div>
+                </div>
+                <div class="contact-item mb-3">
+                    <span class="fw-bold fs-4 text-primary"> <i class="bi bi-telephone-fill"></i> Work Scedule</span>
+                    <div class="mt-3">
+                        <span>Mon - Sat: 11:00 - 19:00 </span>
+                        <span>Sun: 11:00 - 16:00</span>
+                    </div>
+                </div>
+                <div class="contact-item mb-3">
+                    <span class="fw-bold fs-4 text-primary"><i class="bi bi-envelope-fill"></i> Head Office</span>
+                    <div class="mt-3">
+                        hello@apartb.apartment
+                        support@apartb.apartment
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-9">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3193.7359105780015!2d-73.04771988798167!3d-36.82484777805564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9669b5f607f8d407%3A0xc752b4d932fe12a1!2sMall%20del%20Centro%20Concepci%C3%B3n!5e0!3m2!1ses-419!2scl!4v1671819834119!5m2!1ses-419!2scl" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </div>
+    <div class="row section-layout contact-card-box">
+        <div class="col-sm-12 col-md-6 ">
+            <img src="https://cdn.pixabay.com/photo/2017/03/28/12/17/chairs-2181994_960_720.jpg" alt="">
+        </div>
+        <div class="col-sm-12 col-md-6 p-5">
+            <h3 class="mb-5">Contactenos</h3>
+            <form action="#">
+                <div class="mb-3">
+                    <span class="mb-1">Nombre</span>
+                    <input type="text" class="form-control form-layout">
+                </div>
+                <div class="mb-3">
+                    <span class="mb-1">Correo</span>
+                    <input type="email" class="form-control form-layout">
+                </div>
+                <div class="mb-3">
+                    <span class="mb-1">Mensaje</span>
+                    <textarea cols="30" rows="10" class="form-control form-layout"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div> 
+</div>
+
+
+
+{% endblock content %}

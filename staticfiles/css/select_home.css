@@ -1,0 +1,107 @@
+
+.container-select-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 25%;
+    z-index: 120;
+}
+
+.container-select {
+    display: flex;
+    max-width: 250px;
+    width: 100%;
+    padding: 20px 30px;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+}
+.container-select:nth-child(1) {
+    border-radius: 10px 0px 0px 10px;
+}
+.container-select:nth-child(4) {
+    max-width: 200px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 0px 10px 10px 0px;
+} 
+.container-select:nth-child(4) .input-select {
+    color: white;
+}
+
+.select-info {
+    display: flex;
+    gap: 15px;
+}
+
+.select-info .input-select {
+    font-size: 1rem;
+    color: rgb(149, 149, 149);
+}
+
+
+.select-info .icon-select {
+    font-size: 1rem;
+    color: rgb(149, 149, 149);
+}
+
+
+.container-select .icon-arrow  {
+    font-size: .7rem;
+    color: rgb(149, 149, 149);
+}
+.container-select .icon-arrow i {
+    transform: rotateX(180deg);
+    transition: 1s transform;
+}
+
+.toggle-input-select-show {
+    position: absolute;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    top: 112%;
+    left:0;
+    border-radius: 5px;
+    overflow: hidden;
+    height: auto;
+    box-shadow: 5px 5px 20px rgba(0, 0,0, 0.2);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .5s ease, visibility .5s ease;
+}
+.container-select.activate .toggle-input-select-show {
+    visibility: visible;
+    opacity: 1;
+}
+
+.container-select.activate .icon-arrow i {
+    transform: rotateX(0);
+}
+
+
+
+.toggle-scroll {
+    max-height: 150px;
+    overflow-y: scroll;
+}
+
+
+.toggle-input-select-show .content-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(115, 115, 115);
+    font-size: 1rem;
+}
+.toggle-input-select-show .content-link:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.toggle-input-select-show .content-link li {
+    list-style: none;
+}

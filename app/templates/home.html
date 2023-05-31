@@ -1,0 +1,357 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'components/Header.html' %}
+
+
+<section class="mb-3 content-pos section-layout">
+    <div id="carouselExampleControls" class="carousel slide carrousel-layout" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active image-container">
+                <img src="{% static 'img/background3.jpg' %}" alt="...">
+                <div class="carousel-caption d-none d-md-block text-content-center content-textz">
+                    <h5 class="h1 fw-bold">Tu espacio perfecto</h5>
+                    <p class="fs-3">Descubre tu lugar para llamar hogar.</p>
+                </div>
+            </div>
+            
+            <div class="carousel-item image-container">
+                <img src="https://bambooarquitectura.com/wp-content/uploads/2020/06/casa-tradicional-08.jpg" alt="...">
+                <div class="carousel-caption d-none d-md-block text-content-center content-textz">
+                    <h5 class="h1 fw-bold">Tu espacio perfecto</h5>
+                    <p class="fs-3">Descubre tu lugar para llamar hogar.</p>
+                </div>
+            </div>
+            <!--
+            <div class="carousel-item">
+                <img src="https://bambooarquitectura.com/wp-content/uploads/2020/06/casa-tradicional-08.jpg" alt="...">
+                <div class="carousel-caption d-none d-md-block text-content-center ">
+                    <h5 class="h1">First slide label</h5>
+                    <p class="fs-3">Some representative placeholder content for the first slide.</p>
+                </div>
+            </div>
+            -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+
+
+        <div class="custom-container  content-w">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row align-items-center">
+                    <div class="col-sm-12 col-md-3">
+                        <label>Compra o Venta</label>
+                        {{form.status}}
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <label>Region</label>
+                        {{form.region}}
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <label>Comuna</label>
+                        {{form.city}}
+                    </div>
+                    <div class="col-sm-12 col-md-3">
+                        <label>Realizar la busqueda</label>
+                        <input type="submit" value="Buscar" class="btn btn-dark w-100 h-100">
+                    </div>
+                </div>
+            </form>
+    
+            <script>
+    
+                $(function () {
+                    $('select[name="region"]').on('change', function () {
+                        let id = $(this).val();    // no entiendo este fragmento de codigo
+                        let select_products = $('select[name="city"]')
+                        let options = `<option> ---------- </option>`
+                        console.log("Entro aqui")
+                        const form = {
+                            'action': 'search_product_id',
+                            'id': id
+                        }
+    
+                        $.ajax({
+                            traditional: true,
+                            url: window.location.pathname, // referencia a la url que en estemmomento se esta trabajando
+                            type: 'POST',
+                            data: form,
+                            dataType: 'json',
+                        }).done(function (data) {
+                            console.log(data)
+                            if (!data.hasOwnProperty('error')) {
+                                $.each(data, function (key, value) {
+                                    options += `<option value=${value.id}>${value.name}</option>`
+                                })
+                                return false
+                            }
+                            //message_error(data.error)
+                        }).fail(function (jqXHR, textStatus, errorThrown) {
+                            alert(textStatus + ': ' + errorThrown)
+                        }).always(function (data) {
+                            select_products.html(options)
+                        })
+                    });
+                })
+    
+            </script>
+    
+        </div>
+
+    </div>
+
+
+
+
+</section>
+
+
+
+
+{% if favorite %}
+    <section class="section-layout">
+
+        <div class="global-container">
+            <h3 class="mb-4">Popular Properties</h3>
+
+            <div class="row gy-4">
+                {% for rs in favorite %}
+
+                <div class="col-md-4">
+                    <div class="card-component">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="container-img">
+                                    <a href="/{{rs.id}}/">
+                                        <img src="{{rs.img_principal.url}}" alt="">
+                                    </a>
+                                    <!--
+                                    <div class="ticker-camera">
+                                        <span><i class="fa-solid fa-camera"></i> 18 </span>
+                                    </div>
+                                    -->
+
+                                    <div class="ticker">
+                                        {% if rs.is_vent %}
+                                        <span class="span-features">FEATURED</span>
+                                        <span class="span-rent">Arriendo</span>
+                                        {% else %}
+                                        <span class="span-features">FEATURED</span>
+                                        <span class="span-vent">Venta</span>
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="ticker-like">
+                                        <span><i class="fa-solid fa-house-laptop"></i></span>
+                                        <span><i class="fa-regular fa-heart"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="container-content">
+                                    <div>
+                                        <a href="/{{rs.id}}">
+                                            <h4>{{rs.title}}</h4>
+                                        </a>
+                                        <div class="row mt-4 gap-2">
+                                            <div class="col-12">
+                                                <span class="span-icon"> <i class="fa-solid fa-bath"></i></i> {{rs.n_bath}} Baños
+                                                </span>
+                                            </div>
+                  
+                                            <div class="col-12">
+                                                <span class="span-icon"> <i class="bi bi-alt"></i> {{rs.n_parking}} Estacionamiento
+                                                </span>
+                                            </div>
+                                            <div class="col-12">
+                                                <span class="span-icon"> <i class="fa-solid fa-bed"></i> {{rs.n_room}} Habitaciones
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>${{rs.price}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+<section class="section-layout">
+    <div class="global-container">
+        <h3 class="mb-4">Popular Properties</h3>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 mb-3">
+                <div class="card-popular">
+                    <div class="card-popular-layout">
+                        <img src="{% static 'img/c1.jpg' %}" alt="">
+                        <span class="sticke-span">BUY</span>
+                        <div class="ticker-camera">
+                            <span><i class="fa-solid fa-camera"></i> 18 </span>
+                        </div>
+                        <div class="ticker-like">
+                            <span><i class="fa-solid fa-house-laptop"></i></span>
+                            <span><i class="fa-regular fa-heart"></i></span>
+                        </div>
+                        <div class="content-popular">
+                            <h3>Maverik Apartament bay view</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-6 mb-3">
+
+
+                <div class="card-popular">
+                    <div class="card-popular-layout">
+                        <img src="{% static 'img/c2.jpg' %}" alt="">
+                        <span class="sticke-span">BUY</span>
+                        <div class="ticker-camera">
+                            <span><i class="fa-solid fa-camera"></i> 18 </span>
+                        </div>
+                        <div class="ticker-like">
+                            <span><i class="fa-solid fa-house-laptop"></i></span>
+                            <span><i class="fa-regular fa-heart"></i></span>
+                        </div>
+                        <div class="content-popular">
+                            <h3>Maverik Apartament bay view</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-4 mb-3">
+
+                <div class="card-popular">
+                    <div class="card-popular-layout">
+                        <img src="{% static 'img/c2.jpg' %}" alt="">
+                        <div class="ticker-camera">
+                            <span><i class="fa-solid fa-camera"></i> 18 </span>
+                        </div>
+                        <div class="ticker-like">
+                            <span><i class="fa-solid fa-house-laptop"></i></span>
+                            <span><i class="fa-regular fa-heart"></i></span>
+                        </div>
+                        <div class="content-popular">
+                            <h3>Maverik Apartament bay view</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-4 mb-3">
+
+                <div class="card-popular">
+                    <div class="card-popular-layout">
+                        <img src="{% static 'img/c4.jpg' %}" alt="">
+                        <div class="ticker-camera">
+                            <span><i class="fa-solid fa-camera"></i> 18 </span>
+                        </div>
+                        <div class="ticker-like">
+                            <span><i class="fa-solid fa-house-laptop"></i></span>
+                            <span><i class="fa-regular fa-heart"></i></span>
+                        </div>
+                        <div class="content-popular">
+                            <h3>Maverik Apartament bay view</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-12 col-md-4 mb-3">
+
+                <div class="card-popular">
+                    <div class="card-popular-layout">
+                        <img src="{% static 'img/c1.jpg' %}" alt="">
+                        <span class="sticke-span">BUY</span>
+                        <div class="ticker-camera">
+                            <span><i class="fa-solid fa-camera"></i> 18 </span>
+                        </div>
+                        <div class="ticker-like">
+                            <span><i class="fa-solid fa-house-laptop"></i></span>
+                            <span><i class="fa-regular fa-heart"></i></span>
+                        </div>
+                        <div class="content-popular">
+                            <h3>Maverik Apartament bay view</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="section-layout">
+    <div class="global-container">
+
+        <h2 class="mb-4">Propiedades que te podrian interesar</h2>
+
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                
+                {% for p in favorite %}
+                <div class="swiper-slide">
+                        <div class="card-slider">
+                            <a href="/{{p.id}}" class="link-card">
+                            <div class="content-img">
+                                <img src="{{p.img_principal.url}}"
+                                    alt="">
+                                {% if p.is_vent %}
+                                <span class="span-features">Arriendo</span>
+                                {% else %}
+                                <span class="span-features">Venta</span>
+                                {% endif %}
+                            </div>
+                            </a>
+                            <div class="container-content p-4">
+                                <h4>{{p.title}}</h4>
+                                <div class="content">
+                                    <div class="container-icon">
+                                        <span><i class="fa-solid fa-bed"></i> {{p.n_room}} </span>
+                                        <span><i class="fa-solid fa-bath"></i></i> {{p.n_bath}} </span>
+                                    </div>
+                                    <span class="price">${{p.price }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
+                {% endfor %}
+
+            </div>
+            <!-- If we need navigation buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+    </div>
+</section>
+
+
+
+{% endblock content %}

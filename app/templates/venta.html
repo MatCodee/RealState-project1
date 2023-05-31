@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'components/HeaderWhite.html' %}
+
+
+{% if servicios %}
+{% for ser in servicios %}
+
+
+<section class="section-layout">
+    <div class="global-container">
+        <div class="row gy-4">
+            {% for rs in servicios %}
+
+                <div class="col-sm-12 col-md-6 col-lg-4">
+                    <div class="card-component">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="container-img">
+                                    <img src="{{img_principal.url}}"
+                                        alt="">
+                                    <div class="ticker-camera">
+                                        <span><i class="fa-solid fa-camera"></i> 18 </span>
+                                    </div>
+                                    <div class="ticker">
+                                        {% if rs.is_vent %}
+                                            <span class="span-features">FEATURED</span>
+                                            <span class="span-rent">RENT</span>
+                                        {% else %}
+                                            <span class="span-features">FEATURED</span>
+                                            <span class="span-vent">VENT</span>
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="ticker-like">
+                                        <span><i class="fa-solid fa-house-laptop"></i></span>
+                                        <span><i class="fa-regular fa-heart"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="container-content">
+                                    <div>
+                                        <h4>{{rs.title}}</h4>
+                                        <div class="row mt-4">
+                                            <div class="col-6">
+                                                <span class="span-icon"> <i class="fa-solid fa-bath"></i></i> 4 beds
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="span-icon"> <i class="fa-solid fa-bed"></i> {{rs.n_bath}} bath
+                                                </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="span-icon"> <i class="bi bi-alt"></i> {{rs.n_room}} room </span>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="span-icon"> <i class="bi bi-alt"></i> {{rs.n_parking}} parking </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>${{rs.price}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+{% endfor %}
+{% else %}
+<div class="global-container">
+    <h1> No se han encontrado resultados </h1>
+</div>
+{% endif %}
+
+
+
+{% endblock content %}
