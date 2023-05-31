@@ -30,7 +30,7 @@ SECRET_KEY = 'SECRET_KEY_ABSTRACT'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -205,7 +206,7 @@ else:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
     PUBLIC_MEDIA_LOCATION = 'media_cdn'
 
-    DEFAULT_FILE_STORAGE = 'app.storage_settigns.MediaStorage'  
+    DEFAULT_FILE_STORAGE = 'myapp.storage_settigns.MediaStorage'  
 
     # Configuración adicional opcional
     AWS_S3_OBJECT_PARAMETERS = {
