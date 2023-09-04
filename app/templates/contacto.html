@@ -43,6 +43,7 @@
         <div class="col-sm-12 col-md-6 p-5">
             <h3 class="mb-5">Contactenos</h3>
             <form action="#">
+                {% csrf_token %}
                 <div class="mb-3">
                     <span class="mb-1">Nombre</span>
                     <input type="text" class="form-control form-layout">

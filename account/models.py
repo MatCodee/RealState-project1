@@ -7,11 +7,11 @@ from django.conf import settings
 from django.dispatch import receiver
 
 
-
 def upload_location(instance, filename):
 	file_path = 'user{user_id}/{username}-{filename}'.format(
 				user_id=str(instance.id),username=str(instance.username), filename=filename)
 	return file_path
+
 
 class MyAccountManager(BaseUserManager):
     def create_user(self,email,username,password = None):
