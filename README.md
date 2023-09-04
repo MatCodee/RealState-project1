@@ -2,7 +2,8 @@
 
 ## Comenzando 🚀
 Este es un proyecto de real state, es decir una plataforma de bienes raices.
-![Imagen de proyecto](./doc/images/project/png)
+
+![Imagen de proyecto](./doc/images/project.jpg)
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
