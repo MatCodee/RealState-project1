@@ -1,8 +1,5 @@
 
-
-
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+![Imagen de proyecto](/doc/images/project.png)
 
 ## Comenzando 🚀
 Este es un proyecto de real state, es decir una plataforma de bienes raices.
