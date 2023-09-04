@@ -1,8 +1,8 @@
 
-![Imagen de proyecto](/doc/images/project.png)
 
 ## Comenzando 🚀
 Este es un proyecto de real state, es decir una plataforma de bienes raices.
+![Imagen de proyecto](./doc/images/project/png)
 
 Mira **Deployment** para conocer como desplegar el proyecto.
 
